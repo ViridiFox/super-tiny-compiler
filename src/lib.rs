@@ -85,7 +85,7 @@ pub fn tokenize(input: &str) -> Vec<Token> {
             'a'..='z' | 'A'..='Z' => {
                 let mut value = String::new();
 
-                while matches!(c, 'a'..='z') {
+                while matches!(c, 'a'..='z' | 'A'..='Z') {
                     value.push(c);
                     input.next();
                     if let Some(&c_next) = input.peek() {
