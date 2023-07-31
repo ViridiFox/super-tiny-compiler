@@ -80,6 +80,7 @@ pub fn tokenize(input: &str) -> Vec<Token> {
                 }
 
                 tokens.push(Token::String(value));
+                input.next();
             }
             'a'..='z' => {
                 let mut value = String::new();
@@ -320,7 +321,7 @@ pub fn codegen(ast: Node) -> String {
         }
         Node::Identifier(name) => name,
         Node::NumberLiteral(number) => number.to_string(),
-        Node::StringLiteral(string) => string,
+        Node::StringLiteral(string) => "\"".to_string() + &string + "\"",
     }
 }
 
